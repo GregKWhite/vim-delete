@@ -20,7 +20,6 @@ endfunction
 
 function! s:getnumlines(input)
   let match = matchstr(a:input, '^\d\+')
-  echo 'match = ' . match
   if match == ''
     return 0
   else
@@ -38,7 +37,7 @@ function! s:deletetargetline()
   let dir = s:getdirection(input)
   if dir == 'j' || dir == 'k'
     call s:executedelete(numlines, dir)
-    ''
+    silent! ''
   endif
 endfunction
 
