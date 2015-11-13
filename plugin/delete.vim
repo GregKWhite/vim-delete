@@ -41,6 +41,8 @@ function! s:deletetargetline()
   endif
 endfunction
 
+" Deletes the line that is numlines above/below the current line
+" and stores it in the default or user-defined register
 function! s:executedelete(numlines, dir)
   let sign = a:dir == 'j' ? 1 : -1
   let targetline = (sign * a:numlines) + line('.')
@@ -62,6 +64,8 @@ endfunction
 
 " Create the mappings
 nnoremap <silent> <Plug>DeleteLine :<C-U>call <SID>deletetargetline()<CR>
-if !exists("g:delete_no_mappings") || !g:delete_no_mappings
+if exists('g:delete_custom_mapping')
+  execute 'nmap ' . g:delete_custom_mapping . ' <PLUG>DeleteLine'
+elseif !exists("g:delete_no_mapping") || !g:delete_no_mapping
   nmap gd <Plug>DeleteLine
 endif
