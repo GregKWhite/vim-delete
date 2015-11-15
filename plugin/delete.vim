@@ -21,7 +21,7 @@ endfunction
 function! s:getnumlines(input)
   let match = matchstr(a:input, '^\d\+')
   if match == ''
-    return 0
+    return 1
   else
     return match
   endif
