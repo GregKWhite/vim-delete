@@ -64,6 +64,7 @@ endfunction
 
 " Create the mappings
 nnoremap <silent> <Plug>DeleteLine :<C-U>call <SID>deletetargetline()<CR>
+\:call repeat#set("\<Plug>DeleteLine")<CR>
 if exists('g:delete_custom_mapping')
   execute 'nmap ' . g:delete_custom_mapping . ' <PLUG>DeleteLine'
 elseif !exists("g:delete_no_mapping") || !g:delete_no_mapping
